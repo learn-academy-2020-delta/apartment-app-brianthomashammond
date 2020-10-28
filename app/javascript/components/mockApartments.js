@@ -1,4 +1,5 @@
-let mockApts = [
+
+let mockApartments = [
     {
         id: 1,
         street: "221B Baker St",
@@ -39,3 +40,5 @@ let mockApts = [
 
     }
 ]
+
+export default mockApartments
