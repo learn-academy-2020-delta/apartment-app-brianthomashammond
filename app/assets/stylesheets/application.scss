@@ -1,12 +1,14 @@
 @import 'bootstrap';
 
 #header {
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     background-color: slategrey;
     color: whitesmoke;
     position: fixed;
     top: 0;
-    height: 5vh;
+    height: 7vh;
     width: 100vw;
 }
 
@@ -17,9 +19,34 @@
     overflow: hidden;
 }
 
+#notFound {
+    display: block;
+    text-align: center;
+    padding: 50vh;
+    color: black;
+}
+
+#index-body {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
 .nav {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     position: fixed;
     bottom: 0;
     height: 5vh;
@@ -29,4 +56,10 @@
 
 a {
     color: whitesmoke;
+    font-size: 2vh;
+}
+
+h1 {
+    padding-left: 3vw;
+    font-size: 4vh;
 }

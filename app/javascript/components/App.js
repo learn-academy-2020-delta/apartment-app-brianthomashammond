@@ -10,8 +10,9 @@ import ApartmentEdit from "./pages/ApartmentEdit"
 import ApartmentIndex from "./pages/ApartmentIndex"
 import ApartmentNew from "./pages/ApartmentNew"
 import ApartmentShow from "./pages/ApartmentShow"
+import MyApartmentIndex from "./pages/MyApartmentIndex"
 
-import mockApartments from './mockApartments.js'
+// import mockApartments from './mockApartments.js'
 
 import {
   BrowserRouter as Router,
@@ -25,12 +26,49 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      apartments: mockApartments
+      apartments: []
     }
   }
 
-  createNewApartment = (newApartment) => {
-    console.log(newApartment);
+  componentDidMount() {
+    this.apartmentIndex()
+  }
+
+  apartmentIndex = () => {
+    fetch("/apartments")
+      .then(response => {
+        return response.json()
+      })
+      .then(payload => {
+        this.setState({ apartments: payload })
+      })
+      .catch(errors => {
+        console.log("index errors:", errors);
+      })
+  }
+
+  createNewApartment = (apartment) => {
+    console.log(apartment);
+    return fetch("/apartments", {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+      .then(response => {
+        if (response.status === 200) {
+          this.apartmentIndex()
+        }
+        return response
+      })
+      .catch(errors => {
+        console.log("create errors:", errors)
+      })
+  }
+
+  updateApartment = (apartment, id) => {
+    console.log('apartment', apartment, 'id', id);
   }
 
   render() {
@@ -44,10 +82,27 @@ export default class App extends Component {
     return (
       <Router>
         <Header />
+
         <Switch>
+
+          {/* HOME */}
           <Route exact path="/" component={Home} />
-          <Route path="/apartmentedit/:id" component={ApartmentEdit} />
+
+          {/* APARTMENT INDEX */}
           <Route path="/apartmentindex" render={(props) => <ApartmentIndex apartments={this.state.apartments} />} />
+
+
+          <Route path="/apartmentshow/:id"
+            render={(props) => {
+              let localid = props.match.params.id
+              let apartment = this.state.apartments.find(apartment =>
+                apartment.id === parseInt(localid))
+              return (
+                <ApartmentShow apartment={apartment} />
+              )
+            }}
+          />
+
           {logged_in &&
             <Route
               path="/apartmentnew"
@@ -59,17 +114,40 @@ export default class App extends Component {
               }
             />
           }
-          <Route path="/apartmentshow/:id"
-            render={(props) => {
-              let id = props.match.params.id
-              let apartment = this.state.apartments.find(apartment =>
-                apartment.id === parseInt(id))
-              return (
-                <ApartmentShow apartment={apartment} />
-              )
-            }}
-          />
+
+          {logged_in &&
+            <Route
+              path="/myapartmentindex"
+              render={(props) => {
+                let user = current_user.id
+                let apartments =
+                  this.state.apartments.filter(apartment => apartment.user_id === user)
+                return (
+                  <MyApartmentIndex apartments={apartments} />
+                )
+              }}
+            />
+          }
+
+          {logged_in &&
+            <Route
+              path="/apartmentedit/:id"
+              render={(props) => {
+                let id = props.match.params.id
+                let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
+                return (
+                  <ApartmentEdit
+                    updateApartment={this.updateApartment}
+                    current_user={current_user}
+                    apartment={apartment}
+                  />
+                )
+              }}
+            />
+          }
+
           <Route component={NotFound} />
+
         </Switch>
 
         <Footer

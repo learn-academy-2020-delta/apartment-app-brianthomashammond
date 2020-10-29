@@ -10,7 +10,8 @@ let mockApartments = [
         price: "1000",
         bedrooms: 2,
         bathrooms: 2,
-        pets: "no"
+        pets: "no",
+        user_id: 1
 
     },
     {
@@ -23,7 +24,8 @@ let mockApartments = [
         price: "800",
         bedrooms: 3,
         bathrooms: 2.5,
-        pets: "yes"
+        pets: "yes",
+        user_id: 1
 
     },
     {
@@ -36,7 +38,8 @@ let mockApartments = [
         price: "2000",
         bedrooms: 1,
         bathrooms: .5,
-        pets: "no"
+        pets: "no",
+        user_id: 2
 
     }
 ]

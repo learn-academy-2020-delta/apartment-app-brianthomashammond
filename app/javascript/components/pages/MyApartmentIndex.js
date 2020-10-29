@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-export default class ApartmentIndex extends Component {
+export default class MyApartmentIndex extends Component {
     render() {
         return (
             <>
@@ -16,9 +16,14 @@ export default class ApartmentIndex extends Component {
                                 <Link to={`/apartmentshow/${apartment.id}`} className="button">
                                     More Info
                                 </Link>
+                                <br />
+                                <Link to={`/apartmentedit/${apartment.id}`} className="button">
+                                    Edit Listing
+                                </Link>
                             </div>
                         )
-                    })}
+                    })
+                    }
                 </div>
             </>
         )

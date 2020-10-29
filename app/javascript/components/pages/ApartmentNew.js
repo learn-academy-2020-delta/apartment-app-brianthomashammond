@@ -157,7 +157,7 @@ export default class ApartmentNew extends Component {
                         </Form>
                     </div>
                 </div>
-                { this.state.success && <Redirect to="/myindex" />}
+                {this.state.success && <Redirect to="/apartmentindex" />}
             </>
         )
     }
