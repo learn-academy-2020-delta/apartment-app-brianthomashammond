@@ -86,7 +86,7 @@ export default class ApartmentEdit extends Component {
                             <FormGroup>
                                 <Label>Manager's Email</Label>
                                 <Input
-                                    type="text"
+                                    type="email"
                                     name="email"
                                     onChange={this.handleChange}
                                     value={this.state.form.email}
@@ -157,7 +157,7 @@ export default class ApartmentEdit extends Component {
                         </Form>
                     </div>
                 </div>
-                { this.state.success && <Redirect to="/apartmentindex" />}
+                { this.state.success && <Redirect to="/myapartmentindex" />}
             </>
         )
     }

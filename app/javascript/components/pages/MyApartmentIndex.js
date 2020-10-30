@@ -10,16 +10,17 @@ export default class MyApartmentIndex extends Component {
                         return (
                             <div key={index} className="index-card">
                                 <h3>{apartment.street}</h3>
-                                <h3>{apartment.city}</h3>
-                                <h3>{apartment.state}</h3>
+                                <h3>{apartment.city}, {apartment.state}</h3>
                                 <br />
-                                <Link to={`/apartmentshow/${apartment.id}`} className="button">
-                                    More Info
-                                </Link>
-                                <br />
-                                <Link to={`/apartmentedit/${apartment.id}`} className="button">
-                                    Edit Listing
-                                </Link>
+                                <div id="my-buttons">
+                                    <Link to={`/apartmentshow/${apartment.id}`} className="button">
+                                        More Info
+                                    </Link>
+                                    <br />
+                                    <span onClick={() => { this.props.deleteApartment(apartment.id) }} className="button">
+                                        Remove Listing
+                                </span>
+                                </div>
                             </div>
                         )
                     })

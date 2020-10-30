@@ -31,10 +31,10 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.apartmentIndex()
+    this.getApartments()
   }
 
-  apartmentIndex = () => {
+  getApartments = () => {
     fetch("/apartments")
       .then(response => {
         return response.json()
@@ -48,7 +48,6 @@ export default class App extends Component {
   }
 
   createNewApartment = (apartment) => {
-    console.log(apartment);
     return fetch("/apartments", {
       body: JSON.stringify(apartment),
       headers: {
@@ -57,10 +56,11 @@ export default class App extends Component {
       method: "POST"
     })
       .then(response => {
-        if (response.status === 200) {
-          this.apartmentIndex()
-        }
-        return response
+        // if (response.status === 200) {
+        //   this.apartmentIndex()
+        // }
+        // return response
+        this.getApartments()
       })
       .catch(errors => {
         console.log("create errors:", errors)
@@ -68,7 +68,39 @@ export default class App extends Component {
   }
 
   updateApartment = (apartment, id) => {
-    console.log('apartment', apartment, 'id', id);
+    return fetch(`/apartments/${id}`, {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+      .then(response => {
+        if (response.status === 200) {
+          this.getApartments()
+        }
+        return response
+      })
+      .catch(errors => {
+        console.log("edit errors", errors)
+      })
+  }
+
+  deleteApartment = (id) => {
+    return fetch(`apartments/${id}`, {
+      hedaers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then(response => {
+        alert("Remove this listing?")
+        this.getApartments()
+        return response
+      })
+      .catch(errors => {
+        console.log("delete errors", errors);
+      })
   }
 
   render() {
@@ -98,7 +130,7 @@ export default class App extends Component {
               let apartment = this.state.apartments.find(apartment =>
                 apartment.id === parseInt(localid))
               return (
-                <ApartmentShow apartment={apartment} />
+                <ApartmentShow apartment={apartment} logged_in={logged_in} />
               )
             }}
           />
@@ -123,7 +155,9 @@ export default class App extends Component {
                 let apartments =
                   this.state.apartments.filter(apartment => apartment.user_id === user)
                 return (
-                  <MyApartmentIndex apartments={apartments} />
+                  <MyApartmentIndex
+                    apartments={apartments}
+                    deleteApartment={this.deleteApartment} />
                 )
               }}
             />

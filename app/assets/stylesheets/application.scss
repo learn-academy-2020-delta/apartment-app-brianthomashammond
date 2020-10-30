@@ -1,4 +1,9 @@
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
 
 #header {
     display: flex;
@@ -38,9 +43,40 @@
     transform: translate(-50%, -50%);
 }
 
+#my-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#show-body {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.button {
+    background-color: slategrey;
+    color: whitesmoke;
+    border: 1px solid slategrey;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.button:hover {
+    background-color: whitesmoke;
+    color: slategrey;
+}
+
 .form {
     padding-top: 10vh;
     padding-bottom: 10vh;
+}
+
+.index-card {
+    border: 1px solid slategrey;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
 }
 
 .nav {
