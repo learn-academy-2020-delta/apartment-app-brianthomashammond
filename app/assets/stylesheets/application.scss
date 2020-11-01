@@ -12,6 +12,8 @@
     background-color: slategrey;
     color: whitesmoke;
     position: fixed;
+    padding-top: 1.25vh;
+    padding-left: 2vh;
     top: 0;
     height: 7vh;
     width: 100vw;
@@ -88,6 +90,7 @@
 }
 
 .index-card {
+    text-align: center;
     border: 1px solid slategrey;
     border-radius: 5px;
     padding: 10px;
@@ -122,7 +125,6 @@ a {
 }
 
 h1 {
-    padding-left: 3vw;
     font-size: 4vh;
 }
 

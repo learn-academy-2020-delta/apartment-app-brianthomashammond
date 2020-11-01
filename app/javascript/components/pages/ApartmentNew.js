@@ -208,7 +208,7 @@ export default class ApartmentNew extends Component {
                                     onClick={this.handleSubmit}
                                 >
                                     Add a New Apartment
-                            </Button>
+                                </Button>
                             </div>
                         </Form>
                     </div>

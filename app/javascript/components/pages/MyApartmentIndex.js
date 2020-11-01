@@ -16,7 +16,6 @@ export default class MyApartmentIndex extends Component {
                                     <Link to={`/apartmentshow/${apartment.id}`} className="button">
                                         More Info
                                     </Link>
-                                    <br />
                                     <span onClick={() => { this.props.deleteApartment(apartment.id) }} className="button">
                                         Remove Listing
                                 </span>
