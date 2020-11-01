@@ -49,9 +49,15 @@
     justify-content: space-around;
 }
 
-#show-body {
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+.body-container {
+    display: flex;
+    width: 100vw;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2vh;
 }
 
 .button {
@@ -60,6 +66,7 @@
     border: 1px solid slategrey;
     border-radius: 5px;
     padding: 10px;
+    font-size: 2vh;
 }
 
 .button:hover {
@@ -72,6 +79,12 @@
     padding-top: 10vh;
     padding-left: 12.5%;
     padding-bottom: 10vh;
+}
+
+.form-button-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5vh;
 }
 
 .index-card {
@@ -92,6 +105,17 @@
     background-color: slategrey;
 }
 
+.show-body {
+    display: flex;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    justify-content: space-around;;
+}
+
 a {
     color: whitesmoke;
     font-size: 2vh;
@@ -100,6 +124,14 @@ a {
 h1 {
     padding-left: 3vw;
     font-size: 4vh;
+}
+
+h3 {
+    font-size: 3vh;
+}
+
+p {
+    font-size: 2vh;
 }
 
 .custom-control-input-black:focus~.custom-control-label::before {

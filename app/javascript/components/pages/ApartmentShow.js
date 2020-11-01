@@ -7,9 +7,8 @@ export default class ApartmentShow extends Component {
         const { apartment } = this.props
         return (
             <>
-                <div id="show-body>">
-                    <h3>{apartment.street} Apartment</h3>
-                    <p>{apartment.street}</p>
+                <div className="show-body">
+                    <h3>{apartment.street}</h3>
                     <p>{apartment.city}, {apartment.state}</p>
                     <p>Manager Name: {apartment.manager}</p>
                     <p>Manager Email: {apartment.email}</p>
@@ -17,17 +16,21 @@ export default class ApartmentShow extends Component {
                     <p>Bedrooms: {apartment.bedrooms}</p>
                     <p>Bathrooms: {apartment.bathrooms}</p>
                     <p>Pets allowed?: {apartment.pets}</p>
+                    <div className="form-button-wrapper">
+                        {!this.props.logged_in &&
+                            <Link to={"/apartmentindex"} className="button">
+                                Go to All Apartments
+                            </Link>
+                        }
+                        {this.props.logged_in &&
+                            <>
+                                <Link to={`/apartmentedit/${apartment.id}`} className="button">
+                                    Edit this Apartment
+                                </Link>
+                            </>
+                        }
+                    </div>
                 </div>
-                { !this.props.logged_in &&
-                    <Link to={"/apartmentindex"} className="button">
-                        Back to All Apartments
-                    </Link>
-                }
-                { this.props.logged_in &&
-                    <Link to={"/myapartmentindex"} className="button">
-                        Back to My Apartments
-                    </Link>
-                }
             </>
         )
     }

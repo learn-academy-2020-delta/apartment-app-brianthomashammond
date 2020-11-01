@@ -139,9 +139,9 @@ export default class ApartmentNew extends Component {
                                             <Label>Pets</Label>
                                             <Row>
                                                 <Col>
-                                                    <div class="custom-control custom-radio custom-radio-black">
+                                                    <div class="custom-control custom-radio custom-radio-black radio-row">
                                                         <input type="radio" name="pets"
-                                                            value="yes"
+                                                            value="Yes"
                                                             checked={this.state.form.pets === "yes"}
                                                             onChange={this.handleChange}
                                                             class="custom-control-input custom-control-input-black" id="customCheck1" />
@@ -168,7 +168,7 @@ export default class ApartmentNew extends Component {
                                                         <input type="radio"
                                                             name="pets"
                                                             value="no"
-                                                            checked={this.state.form.pets === "no"}
+                                                            checked={this.state.form.pets === "No"}
                                                             onChange={this.handleChange} class="custom-control-input custom-control-input-black" id="customCheck2" />
                                                         <label class="custom-control-label" for="customCheck2">No</label>
                                                     </div>
@@ -201,13 +201,15 @@ export default class ApartmentNew extends Component {
                                     </FormGroup>
                                 </Col>
                             </Row>
-                            <Button
-                                name="submit"
-                                color="secondary"
-                                onClick={this.handleSubmit}
-                            >
-                                Add a New Apartment
+                            <div className="form-button-wrapper">
+                                <Button
+                                    name="submit"
+                                    className="button"
+                                    onClick={this.handleSubmit}
+                                >
+                                    Add a New Apartment
                             </Button>
+                            </div>
                         </Form>
                     </div>
                 </div>

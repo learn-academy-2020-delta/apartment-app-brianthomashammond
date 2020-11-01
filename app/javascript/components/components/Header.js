@@ -5,7 +5,7 @@ export default class Header extends Component {
         return (
             <>
                 <div id="header">
-                    <h1>Your Apartment Tracker</h1>
+                    <h1>My Apartment Tracker</h1>
                 </div>
 
             </>
