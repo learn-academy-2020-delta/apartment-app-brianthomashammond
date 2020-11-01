@@ -142,7 +142,7 @@ export default class ApartmentNew extends Component {
                                                     <div class="custom-control custom-radio custom-radio-black radio-row">
                                                         <input type="radio" name="pets"
                                                             value="Yes"
-                                                            checked={this.state.form.pets === "yes"}
+                                                            checked={this.state.form.pets === "Yes"}
                                                             onChange={this.handleChange}
                                                             class="custom-control-input custom-control-input-black" id="customCheck1" />
                                                         <label class="custom-control-label" for="customCheck1">Yes</label>
@@ -167,7 +167,7 @@ export default class ApartmentNew extends Component {
                                                     <div class="custom-control custom-radio custom-radio-black">
                                                         <input type="radio"
                                                             name="pets"
-                                                            value="no"
+                                                            value="No"
                                                             checked={this.state.form.pets === "No"}
                                                             onChange={this.handleChange} class="custom-control-input custom-control-input-black" id="customCheck2" />
                                                         <label class="custom-control-label" for="customCheck2">No</label>

@@ -4,7 +4,9 @@ import {
     Form,
     FormGroup,
     Input,
-    Label
+    Label,
+    Row,
+    Col
 } from 'reactstrap'
 import { Redirect } from "react-router-dom";
 
@@ -47,113 +49,167 @@ export default class ApartmentEdit extends Component {
                 <div className="body-container">
                     <div className="form">
                         <Form>
-                            <FormGroup>
-                                <Label>Street</Label>
-                                <Input
-                                    type="text"
-                                    name="street"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.street}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>City</Label>
-                                <Input
-                                    type="text"
-                                    name="city"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.city}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>State</Label>
-                                <Input
-                                    type="text"
-                                    name="state"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.state}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Manager's Name</Label>
-                                <Input
-                                    type="text"
-                                    name="manager"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.manager}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Manager's Email</Label>
-                                <Input
-                                    type="email"
-                                    name="email"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.email}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Price</Label>
-                                <Input
-                                    type="text"
-                                    name="price"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.price}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Bedrooms</Label>
-                                <Input
-                                    type="text"
-                                    name="bedrooms"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.bedrooms}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Bathrooms</Label>
-                                <Input
-                                    type="text"
-                                    name="bathrooms"
-                                    onChange={this.handleChange}
-                                    value={this.state.form.bathrooms}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Pets</Label>
-                                <FormGroup check>
-                                    <Label check>
+                            <Row>
+                                <Col>
+                                    <FormGroup>
+                                        <Label>Street</Label>
                                         <Input
-                                            type="radio"
-                                            name="pets"
-                                            value="yes"
-                                            checked={this.state.form.pets === "yes"}
+                                            type="text"
+                                            name="street"
                                             onChange={this.handleChange}
+                                            value={this.state.form.street}
                                         />
-                                Yes
-                                </Label>
-                                </FormGroup>
-                            </FormGroup>
-                            <FormGroup check>
-                                <Label check>
-                                    <Input
-                                        type="radio"
-                                        name="pets"
-                                        value="no"
-                                        checked={this.state.form.pets === "no"}
-                                        onChange={this.handleChange}
-                                    />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs="9">
+                                    <FormGroup>
+                                        <Label>City</Label>
+                                        <Input
+                                            type="text"
+                                            name="city"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.city}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                                <Col xs="3">
+                                    <FormGroup>
+                                        <Label>State</Label>
+                                        <Input
+                                            type="text"
+                                            name="state"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.state}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <FormGroup>
+                                        <Label>Manager</Label>
+                                        <Input
+                                            type="text"
+                                            name="manager"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.manager}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                                <Col>
+                                    <FormGroup>
+                                        <Label>Email</Label>
+                                        <Input
+                                            type="email"
+                                            name="email"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.email}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <FormGroup>
+                                        <Label>Bedrooms</Label>
+                                        <Input
+                                            type="number"
+                                            name="bedrooms"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.bedrooms}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                                <Col>
+                                    <FormGroup>
+                                        <Label>Bathrooms</Label>
+                                        <Input
+                                            type="number"
+                                            name="bathrooms"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.bathrooms}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                                <Col>
+                                    <Row>
+                                        <FormGroup>
+                                            <Label>Pets</Label>
+                                            <Row>
+                                                <Col>
+                                                    <div class="custom-control custom-radio custom-radio-black radio-row">
+                                                        <input type="radio" name="pets"
+                                                            value="Yes"
+                                                            checked={this.state.form.pets === "Yes"}
+                                                            onChange={this.handleChange}
+                                                            class="custom-control-input custom-control-input-black" id="customCheck1" />
+                                                        <label class="custom-control-label" for="customCheck1">Yes</label>
+                                                    </div>
+                                                    {/* <FormGroup className="custom-control custom-radio custom-radio-black" check>
+                                                        <Label className="custom-control-label" htmlFor="customRadio1"
+                                                            check>
+                                                            <Input
+                                                                type="radio"
+                                                                name="pets"
+                                                                value="yes"
+                                                                checked={this.state.form.pets === "yes"}
+                                                                onChange={this.handleChange}
+                                                                className="custom-control-input custom-control-input-black"
+                                                                id="customRadio1"
+                                                            />
+                                                            Yes
+                                                        </Label>
+                                                    </FormGroup> */}
+                                                </Col>
+                                                <Col>
+                                                    <div class="custom-control custom-radio custom-radio-black">
+                                                        <input type="radio"
+                                                            name="pets"
+                                                            value="No"
+                                                            checked={this.state.form.pets === "No"}
+                                                            onChange={this.handleChange} class="custom-control-input custom-control-input-black" id="customCheck2" />
+                                                        <label class="custom-control-label" for="customCheck2">No</label>
+                                                    </div>
+                                                    {/* <FormGroup check>
+                                                        <Label check>
+                                                            <Input
+                                                                type="radio"
+                                                                name="pets"
+                                                                value="no"
+                                                                checked={this.state.form.pets === "no"}
+                                                                onChange={this.handleChange}
+                                                            />
                                 No
                                 </Label>
-                            </FormGroup>
-
-                            <Button
-                                name="submit"
-                                color="secondary"
-                                onClick={this.handleSubmit}
-                            >
-                                Edit Apartment
+                                                    </FormGroup> */}
+                                                </Col>
+                                            </Row>
+                                        </FormGroup>
+                                    </Row>
+                                </Col>
+                                <Col>
+                                    <FormGroup>
+                                        <Label>Price</Label>
+                                        <Input
+                                            type="text"
+                                            name="price"
+                                            onChange={this.handleChange}
+                                            value={this.state.form.price}
+                                        />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <div className="form-button-wrapper">
+                                <Button
+                                    name="submit"
+                                    className="button"
+                                    onClick={this.handleSubmit}
+                                >
+                                    Edit this Apartment
                             </Button>
+                            </div>
                         </Form>
                     </div>
                 </div>
